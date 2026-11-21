@@ -36,7 +36,7 @@ export function AuthProvider({ children }) {
       return true;
     } else if (email === 'admin@wfx.com' && password === 'admin123') {
       // default admin fallback
-      const defaultAdmin = { ...mockUser, name: 'Dhruv' };
+      const defaultAdmin = { ...mockUser, name: 'Gautam' };
       setUser(defaultAdmin);
       localStorage.setItem('wfx_user', JSON.stringify(defaultAdmin));
       return true;
