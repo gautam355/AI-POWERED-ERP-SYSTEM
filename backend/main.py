@@ -173,8 +173,9 @@ threading.Thread(target=init_vanna, daemon=True).start()
 
 def validate_sql_query(sql: str) -> tuple[bool, str]:
     """
-    Validate dynamically generated SQL queries to allow only read-only (SELECT/WITH)
-    queries and reject stacked queries or destructive commands.
+    OWASP LLM02 Security Sandbox: Validate dynamically generated SQL queries.
+    Enforces strict read-only (SELECT/WITH) boundaries, blocks destructive DDL/DML,
+    prevents stacked queries, and rejects system catalog fingerprinting.
     """
     # 1. Clean whitespace
     sql_clean = sql.strip()

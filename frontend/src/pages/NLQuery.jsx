@@ -9,6 +9,9 @@ import {
   ChevronUp,
   Sparkles,
   Zap,
+  ShieldCheck,
+  ShieldAlert,
+  Lock,
 } from 'lucide-react';
 import { sampleConversations, suggestedQueries } from '../data/mockData';
 import { askQuestion } from '../services/api';
@@ -21,12 +24,25 @@ const REAL_SUGGESTED_QUERIES = [
   "Show all suppliers with their ratings",
   "Which products have GSM above 200?",
   "Show pending and overdue invoices with order details",
-  "What is the total revenue from all orders?",
+  "Test SQL Injection: DROP TABLE sales_orders;",
 ];
 
-// Offline Demo Simulation Engine
+// Offline Demo Simulation Engine with Security Sandbox
 const getDemoResponse = (query) => {
   const q = query.toLowerCase();
+
+  // Security Sandboxing check: Intercept dangerous/destructive keywords
+  const forbiddenKeywords = ['drop', 'delete', 'truncate', 'alter', 'insert', 'update', 'grant', 'revoke', 'copy', 'pg_', 'information_schema'];
+  for (const kw of forbiddenKeywords) {
+    if (new RegExp(`\\b${kw}\\b`, 'i').test(query) || (kw === 'pg_' && q.includes('pg_'))) {
+      return {
+        blocked: true,
+        keyword: kw.toUpperCase(),
+        rule: "OWASP LLM02: Insecure Output Handling & DDL/DML Prevention",
+        reason: `Destructive operation '${kw.toUpperCase()}' was intercepted by the SQL Security Sandbox. Only read-only (SELECT / WITH) statements are permitted under the Principle of Least Privilege.`
+      };
+    }
+  }
 
   if (q.includes('buyer') || q.includes('top 5') || q.includes('order value')) {
     return {
@@ -291,15 +307,32 @@ export default function NLQuery() {
       await new Promise((r) => setTimeout(r, 400));
 
       const demo = getDemoResponse(text);
-      const aiMsg = {
-        id: Date.now() + 1,
-        type: 'ai',
-        text: `Found ${demo.data.length} result${demo.data.length !== 1 ? 's' : ''} for your query:`,
-        sql: demo.sql,
-        results: demo.data,
-      };
-      setMessages((prev) => [...prev, aiMsg]);
-      setOpenSqlBlocks((prev) => ({ ...prev, [aiMsg.id]: true }));
+      
+      if (demo.blocked) {
+        setLoadingStatus('Running SQL Sandbox validation & threat analysis...');
+        await new Promise((r) => setTimeout(r, 450));
+        
+        const aiMsg = {
+          id: Date.now() + 1,
+          type: 'ai',
+          isBlocked: true,
+          keyword: demo.keyword,
+          rule: demo.rule,
+          reason: demo.reason,
+          text: `🚨 Security Violation: Dangerous operation '${demo.keyword}' was blocked by the SQL Security Sandbox.`,
+        };
+        setMessages((prev) => [...prev, aiMsg]);
+      } else {
+        const aiMsg = {
+          id: Date.now() + 1,
+          type: 'ai',
+          text: `Found ${demo.data.length} result${demo.data.length !== 1 ? 's' : ''} for your query:`,
+          sql: demo.sql,
+          results: demo.data,
+        };
+        setMessages((prev) => [...prev, aiMsg]);
+        setOpenSqlBlocks((prev) => ({ ...prev, [aiMsg.id]: true }));
+      }
     } finally {
       setIsTyping(false);
       setLoadingStatus('');
@@ -317,6 +350,26 @@ export default function NLQuery() {
     <div className="flex flex-col h-[calc(100vh-144px)] animate-fade-in">
       {/* Chat Area */}
       <div className="flex-1 premium-card flex flex-col overflow-hidden">
+        {/* Security Posture Bar */}
+        <div className="px-4 py-2.5 bg-surface-50/80 border-b border-surface-100 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span className="text-xs font-bold text-surface-800 tracking-tight">AI SQL Security Sandbox</span>
+            <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200 uppercase">
+              ACTIVE
+            </span>
+          </div>
+          <div className="hidden sm:flex items-center gap-2.5 text-[11px] text-surface-500 font-medium">
+            <span>Read-Only Enforced (PoLP)</span>
+            <span>•</span>
+            <span>Auto-Limit: 100</span>
+            <span>•</span>
+            <span>Timeout: 5s</span>
+            <span>•</span>
+            <span className="text-emerald-700 font-semibold">OWASP Guardrails Active</span>
+          </div>
+        </div>
+
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {messages.length === 0 && (
             <div className="flex flex-col items-center justify-center h-full text-center animate-fade-in">
@@ -328,18 +381,30 @@ export default function NLQuery() {
                 Ask anything about your data
               </h3>
               <p className="text-sm text-surface-400 max-w-md mb-8 leading-relaxed">
-                I'll translate your business questions into SQL queries, fetch the results, and present them in a clean format.
+                I'll translate your business questions into safe, sandboxed SQL queries, fetch the results, and present them in real-time.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg w-full">
-                {REAL_SUGGESTED_QUERIES.slice(0, 4).map((q, i) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl w-full">
+                {REAL_SUGGESTED_QUERIES.map((q, i) => (
                   <button
                     key={i}
                     onClick={() => handleSend(q)}
-                    className="flex items-start gap-2.5 px-4 py-3.5 rounded-2xl bg-surface-50 border border-surface-100 hover:border-primary-200 hover:bg-primary-50/30 text-left transition-all duration-300 group hover:shadow-soft"
+                    className={`flex items-start gap-2.5 px-4 py-3 rounded-2xl border text-left transition-all duration-300 group hover:shadow-soft ${
+                      q.includes('Test SQL Injection')
+                        ? 'bg-rose-50/50 border-rose-200 hover:bg-rose-50 hover:border-rose-300'
+                        : 'bg-surface-50 border-surface-100 hover:border-primary-200 hover:bg-primary-50/30'
+                    }`}
                     id={`suggested-query-${i}`}
                   >
-                    <Zap className="w-4 h-4 text-primary-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                    <span className="text-xs text-surface-600 leading-relaxed font-medium">{q}</span>
+                    {q.includes('Test SQL Injection') ? (
+                      <ShieldAlert className="w-4 h-4 text-rose-500 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                    ) : (
+                      <Zap className="w-4 h-4 text-primary-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                    )}
+                    <span className={`text-xs leading-relaxed font-medium ${
+                      q.includes('Test SQL Injection') ? 'text-rose-700 font-semibold' : 'text-surface-600'
+                    }`}>
+                      {q}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -352,9 +417,11 @@ export default function NLQuery() {
               className={`flex gap-3 ${msg.type === 'user' ? 'justify-end' : 'justify-start'} animate-slide-up`}
             >
               {msg.type === 'ai' && (
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-1 text-white shadow-md"
-                  style={{ background: 'linear-gradient(135deg, #8b5cf6, #a78bfa)' }}>
-                  <Bot className="w-4 h-4" />
+                <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-1 text-white shadow-md ${
+                  msg.isBlocked ? 'bg-rose-600' : ''
+                }`}
+                  style={!msg.isBlocked ? { background: 'linear-gradient(135deg, #8b5cf6, #a78bfa)' } : {}}>
+                  {msg.isBlocked ? <ShieldAlert className="w-4 h-4 text-white" /> : <Bot className="w-4 h-4" />}
                 </div>
               )}
               <div className={`max-w-[75%] ${msg.type === 'user' ? 'order-first' : ''}`}>
@@ -362,12 +429,37 @@ export default function NLQuery() {
                   className={`rounded-2xl px-5 py-3.5 ${
                     msg.type === 'user'
                       ? 'text-white shadow-lg ml-auto'
+                      : msg.isBlocked
+                      ? 'bg-rose-50 border border-rose-200 text-rose-900'
                       : 'bg-surface-50 border border-surface-100 text-surface-700'
                   }`}
                   style={msg.type === 'user' ? { background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)' } : {}}
                 >
                   <p className="text-sm leading-relaxed">{msg.text}</p>
                 </div>
+
+                {/* Security Violation Alert Card */}
+                {msg.type === 'ai' && msg.isBlocked && (
+                  <div className="mt-3 rounded-2xl border border-rose-200 bg-white p-4 shadow-soft animate-fade-in">
+                    <div className="flex items-center gap-2 mb-2">
+                      <ShieldAlert className="w-4 h-4 text-rose-600 shrink-0" />
+                      <span className="text-xs font-bold text-rose-800 uppercase tracking-wider">
+                        SQL Sandbox Security Interception
+                      </span>
+                      <span className="ml-auto text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 border border-rose-200">
+                        {msg.rule.split(':')[0]}
+                      </span>
+                    </div>
+                    <p className="text-xs text-rose-900 leading-relaxed font-medium">
+                      {msg.reason}
+                    </p>
+                    <div className="mt-3 pt-2.5 border-t border-rose-100 flex flex-wrap items-center justify-between gap-2 text-[11px] text-surface-500 font-medium">
+                      <span>Enforcement: <strong className="text-rose-700">Strict Read-Only (PoLP)</strong></span>
+                      <span>Action: <strong className="text-rose-700">Execution Blocked</strong></span>
+                    </div>
+                  </div>
+                )}
+
                 {msg.type === 'ai' && msg.sql && (
                   <SQLBlock sql={msg.sql} isOpen={openSqlBlocks[msg.id]} onToggle={() => toggleSql(msg.id)} />
                 )}

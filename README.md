@@ -116,6 +116,26 @@ erDiagram
 
 ---
 
+## 🛡️ Cybersecurity & AppSec Architecture (OWASP LLM Defense)
+
+WFX AI Explorer enforces defense-in-depth principles to secure critical enterprise data against prompt injections, unauthorized database mutations, and resource exhaustion attacks:
+
+### 1. Dynamic SQL Sandboxing (`backend/main.py`)
+* **Read-Only Operation Enforced:** Every incoming AI/user query is validated to ensure it strictly begins with `SELECT` or `WITH`.
+* **Destructive Keyword Blocking:** Proactively rejects dangerous commands: `DROP`, `ALTER`, `TRUNCATE`, `DELETE`, `INSERT`, `GRANT`, `REVOKE`, `COPY`, `REPLACE`.
+* **Stacked Query Prevention:** Validates single-statement execution by rejecting unquoted semicolons (mitigates piggybacked injection attacks).
+* **System Catalog Isolation:** Blocks reconnaissance attempts on PostgreSQL internals by forbidding access to `information_schema` and `pg_` catalog prefixes.
+* **Comment Stripping:** Automatically removes single-line (`--`) and multi-line (`/* ... */`) SQL comments to prevent injection filter bypasses.
+
+### 2. Mitigation of OWASP Top 10 for LLM Applications
+* **OWASP LLM02 (Insecure Output Handling):** Validates and sanitizes all generated SQL before execution. Even if an LLM is manipulated via prompt injection, the security sandbox intercepts and halts the execution.
+* **OWASP LLM04 (Model Denial of Service):** Automatically injects `LIMIT 100` on open-ended queries and enforces a strict `SET statement_timeout = 5000;` (5s) to mitigate database resource exhaustion.
+
+### 3. Principle of Least Privilege (PoLP)
+* Dynamic queries are routed through a dedicated PostgreSQL read-only role (`SUPABASE_DB_READONLY_USER`), guaranteeing database-level execution boundaries even in edge-case filter bypasses.
+
+---
+
 ## ⚙️ Setup & Configuration
 
 ### Environment Variables Checklist

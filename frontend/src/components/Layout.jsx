@@ -16,6 +16,7 @@ import {
   X,
   Mail,
   KeyRound,
+  ShieldCheck,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -331,6 +332,12 @@ export default function Layout() {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+            {/* AppSec Hardened Status Pill */}
+            <div className="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-[11px] font-bold text-emerald-800 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>AppSec Hardened</span>
+            </div>
+
             {/* Notification */}
             <div className="relative">
               <button
