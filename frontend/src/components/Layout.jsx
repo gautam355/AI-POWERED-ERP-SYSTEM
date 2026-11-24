@@ -38,58 +38,46 @@ const pageTitles = {
   '/finished-goods': 'Finished Goods Explorer',
 };
 
-/* ── WFX Logo SVG ─────────────────────────────────── */
-function WFXLogo({ size = 40 }) {
+/* ── Vanguard Logo SVG ─────────────────────────────── */
+function VanguardLogo({ size = 40 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="bgGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#7c3aed" />
-          <stop offset="50%" stopColor="#6d28d9" />
-          <stop offset="100%" stopColor="#4c1d95" />
+        <linearGradient id="vgdGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#4f46e5" />
+          <stop offset="50%" stopColor="#6366f1" />
+          <stop offset="100%" stopColor="#7c3aed" />
         </linearGradient>
-        <linearGradient id="shineGrad" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
-          <stop offset="0%" stopColor="white" stopOpacity="0.18" />
+        <linearGradient id="vShine" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0%" stopColor="white" stopOpacity="0.25" />
           <stop offset="100%" stopColor="white" stopOpacity="0" />
         </linearGradient>
-        <linearGradient id="accentGrad" x1="0" y1="0" x2="48" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#a78bfa" />
-          <stop offset="100%" stopColor="#c4b5fd" />
+        <linearGradient id="vMarkGrad" x1="12" y1="12" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="100%" stopColor="#c7d2fe" />
         </linearGradient>
-        <filter id="glow">
+        <filter id="vgdGlow">
           <feGaussianBlur stdDeviation="1.5" result="blur" />
           <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
         </filter>
       </defs>
 
       {/* Background rounded square */}
-      <rect width="48" height="48" rx="13" fill="url(#bgGrad)" />
+      <rect width="48" height="48" rx="14" fill="url(#vgdGrad)" />
 
-      {/* Inner subtle border ring */}
-      <rect x="1" y="1" width="46" height="46" rx="12.5" fill="none" stroke="white" strokeOpacity="0.12" strokeWidth="1" />
+      {/* Subtle border */}
+      <rect x="1" y="1" width="46" height="46" rx="13" fill="none" stroke="white" strokeOpacity="0.15" strokeWidth="1" />
 
-      {/* Shine overlay top half */}
-      <rect x="1" y="1" width="46" height="23" rx="12.5" fill="url(#shineGrad)" />
+      {/* Shine overlay */}
+      <rect x="1" y="1" width="46" height="23" rx="13" fill="url(#vShine)" />
 
-      {/* WFX text - clean, bold, modern */}
-      {/* W */}
-      <polyline
-        points="6,15 9,29 12,21.5 15,29 18,15"
-        stroke="white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none"
-        filter="url(#glow)"
+      {/* Vanguard Stylized V Crest */}
+      <path
+        d="M13 15 L24 35 L35 15 L29.5 15 L24 26 L18.5 15 Z"
+        fill="url(#vMarkGrad)"
+        filter="url(#vgdGlow)"
       />
-
-      {/* F */}
-      <line x1="21" y1="15" x2="21" y2="29" stroke="white" strokeWidth="2.4" strokeLinecap="round" />
-      <line x1="21" y1="15" x2="28" y2="15" stroke="white" strokeWidth="2.4" strokeLinecap="round" />
-      <line x1="21" y1="22" x2="27" y2="22" stroke="white" strokeWidth="2.2" strokeLinecap="round" />
-
-      {/* X */}
-      <line x1="32" y1="15" x2="42" y2="29" stroke="url(#accentGrad)" strokeWidth="2.4" strokeLinecap="round" filter="url(#glow)" />
-      <line x1="42" y1="15" x2="32" y2="29" stroke="url(#accentGrad)" strokeWidth="2.4" strokeLinecap="round" filter="url(#glow)" />
-
-      {/* Accent dot bottom right */}
-      <circle cx="44" cy="44" r="2.5" fill="#a78bfa" opacity="0.7" />
+      <circle cx="24" cy="13" r="2.5" fill="#38bdf8" />
     </svg>
   );
 }
@@ -114,7 +102,7 @@ export default function Layout() {
   }, []);
   
   const location = useLocation();
-  const currentTitle = pageTitles[location.pathname] || 'WFX ERP System';
+  const currentTitle = pageTitles[location.pathname] || 'Vanguard AI ERP';
   const { user, logout, updateUser } = useAuth();
   
   // Modal state
@@ -159,7 +147,7 @@ export default function Layout() {
         {/* ── Logo Area ── */}
         <div className="flex items-center gap-3 px-4 h-[72px]">
           <div className="shrink-0">
-            <WFXLogo size={collapsed ? 36 : 38} />
+            <VanguardLogo size={collapsed ? 36 : 38} />
           </div>
           {!collapsed && (
             <div className="animate-fade-in overflow-hidden">
@@ -173,7 +161,7 @@ export default function Layout() {
                   lineHeight: 1.1,
                 }}
               >
-                WFX <span style={{
+                VANGUARD <span style={{
                   background: 'linear-gradient(90deg, #818cf8, #a5b4fc)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
@@ -181,7 +169,7 @@ export default function Layout() {
                 }}>ERP</span>
               </h1>
               <p style={{ fontSize: '9px', color: 'rgba(165,180,252,0.6)', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: '1px' }}>
-                System
+                AI System
               </p>
             </div>
           )}
@@ -277,7 +265,7 @@ export default function Layout() {
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <Boxes style={{ width: 14, height: 14, color: '#818cf8' }} />
-                <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(165,180,252,0.9)' }}>WFX ERP System</span>
+                <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(165,180,252,0.9)' }}>Vanguard AI ERP</span>
               </div>
               <p style={{ fontSize: 10, color: 'rgba(165,180,252,0.4)', marginTop: 3, paddingLeft: 22 }}>v2.1.0 • Supabase</p>
             </div>
@@ -327,7 +315,7 @@ export default function Layout() {
               {currentTitle}
             </h2>
             <p style={{ fontSize: 11, color: '#9ca3af', fontWeight: 500, marginTop: 1 }}>
-              WFX ERP System — Apparel Industry Platform
+              Vanguard AI ERP — Apparel & Enterprise Platform
             </p>
           </div>
 

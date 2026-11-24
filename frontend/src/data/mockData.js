@@ -1,5 +1,5 @@
 // ========================================
-// WFX AI Explorer — Mock Data
+// Vanguard AI ERP — Mock Data
 // ========================================
 
 // Real garment product images
@@ -27,26 +27,26 @@ const productImages = [
 ];
 
 export const finishedGoods = [
-  { id: 1, styleNumber: 'WFX-1001', styleName: 'Classic Oxford Shirt', category: 'Shirts', fabric: '100% Cotton', gsm: 120, supplier: 'Orient Textiles', buyer: 'H&M', sellingPrice: 2099, color: 'White', print: 'Solid', season: 'SS25', image: productImages[0] },
-  { id: 2, styleNumber: 'WFX-1002', styleName: 'Slim Fit Polo', category: 'T-Shirts', fabric: 'Cotton Pique', gsm: 180, supplier: 'Pacific Garments', buyer: 'Zara', sellingPrice: 1549, color: 'Navy', print: 'Solid', season: 'SS25', image: productImages[1] },
-  { id: 3, styleNumber: 'WFX-1003', styleName: 'Relaxed Crew Tee', category: 'T-Shirts', fabric: 'Organic Cotton', gsm: 160, supplier: 'Green Stitch Ltd', buyer: 'Uniqlo', sellingPrice: 1099, color: 'Black', print: 'Solid', season: 'AW25', image: productImages[2] },
-  { id: 4, styleNumber: 'WFX-1004', styleName: 'Heritage Henley', category: 'T-Shirts', fabric: 'Cotton Jersey', gsm: 200, supplier: 'Orient Textiles', buyer: 'Gap', sellingPrice: 1849, color: 'Olive', print: 'Solid', season: 'AW25', image: productImages[3] },
-  { id: 5, styleNumber: 'WFX-1005', styleName: 'Vintage Wash Denim', category: 'Pants', fabric: 'Denim Twill', gsm: 340, supplier: 'Blue Ridge Mills', buyer: "Levi's", sellingPrice: 3799, color: 'Indigo', print: 'Solid', season: 'SS25', image: productImages[4] },
-  { id: 6, styleNumber: 'WFX-1006', styleName: 'Tropical Print Aloha', category: 'Shirts', fabric: 'Rayon', gsm: 100, supplier: 'Pacific Garments', buyer: 'Tommy Bahama', sellingPrice: 2949, color: 'Multi', print: 'Floral', season: 'SS25', image: productImages[5] },
-  { id: 7, styleNumber: 'WFX-1007', styleName: 'Performance Jogger', category: 'Pants', fabric: 'Poly-Spandex', gsm: 240, supplier: 'ActiveWear Co', buyer: 'Nike', sellingPrice: 3249, color: 'Charcoal', print: 'Solid', season: 'AW25', image: productImages[6] },
-  { id: 8, styleNumber: 'WFX-1008', styleName: 'Linen Blend Blazer', category: 'Outerwear', fabric: 'Linen Blend', gsm: 180, supplier: 'Euro Fabrics', buyer: 'Massimo Dutti', sellingPrice: 7599, color: 'Beige', print: 'Solid', season: 'SS25', image: productImages[7] },
-  { id: 9, styleNumber: 'WFX-1009', styleName: 'Graphic Print Hoodie', category: 'Outerwear', fabric: 'French Terry', gsm: 320, supplier: 'Green Stitch Ltd', buyer: 'H&M', sellingPrice: 2499, color: 'Grey', print: 'Graphic', season: 'AW25', image: productImages[8] },
-  { id: 10, styleNumber: 'WFX-1010', styleName: 'Chino Shorts', category: 'Pants', fabric: 'Cotton Twill', gsm: 200, supplier: 'Orient Textiles', buyer: 'Gap', sellingPrice: 2299, color: 'Khaki', print: 'Solid', season: 'SS25', image: productImages[9] },
-  { id: 11, styleNumber: 'WFX-1011', styleName: 'Striped Breton Tee', category: 'T-Shirts', fabric: 'Cotton Jersey', gsm: 160, supplier: 'Euro Fabrics', buyer: 'Zara', sellingPrice: 1699, color: 'Navy/White', print: 'Stripes', season: 'SS25', image: productImages[10] },
-  { id: 12, styleNumber: 'WFX-1012', styleName: 'Puffer Vest', category: 'Outerwear', fabric: 'Nylon Ripstop', gsm: 80, supplier: 'ActiveWear Co', buyer: 'Uniqlo', sellingPrice: 4999, color: 'Black', print: 'Solid', season: 'AW25', image: productImages[11] },
-  { id: 13, styleNumber: 'WFX-1013', styleName: 'Chambray Work Shirt', category: 'Shirts', fabric: 'Chambray', gsm: 140, supplier: 'Blue Ridge Mills', buyer: 'J.Crew', sellingPrice: 2699, color: 'Light Blue', print: 'Solid', season: 'SS25', image: productImages[12] },
-  { id: 14, styleNumber: 'WFX-1014', styleName: 'Floral Maxi Dress', category: 'Dresses', fabric: 'Viscose', gsm: 120, supplier: 'Pacific Garments', buyer: 'H&M', sellingPrice: 3599, color: 'Multi', print: 'Floral', season: 'SS25', image: productImages[13] },
-  { id: 15, styleNumber: 'WFX-1015', styleName: 'Cargo Utility Pant', category: 'Pants', fabric: 'Cotton Canvas', gsm: 280, supplier: 'Orient Textiles', buyer: 'Gap', sellingPrice: 4199, color: 'Army Green', print: 'Solid', season: 'AW25', image: productImages[14] },
-  { id: 16, styleNumber: 'WFX-1016', styleName: 'Knit Beanie', category: 'Accessories', fabric: 'Acrylic Knit', gsm: 200, supplier: 'Green Stitch Ltd', buyer: 'Uniqlo', sellingPrice: 1249, color: 'Burgundy', print: 'Solid', season: 'AW25', image: productImages[15] },
-  { id: 17, styleNumber: 'WFX-1017', styleName: 'Athletic Tank Top', category: 'T-Shirts', fabric: 'Mesh Polyester', gsm: 100, supplier: 'ActiveWear Co', buyer: 'Nike', sellingPrice: 1849, color: 'White', print: 'Solid', season: 'SS25', image: productImages[16] },
-  { id: 18, styleNumber: 'WFX-1018', styleName: 'Wool Overcoat', category: 'Outerwear', fabric: 'Wool Blend', gsm: 400, supplier: 'Euro Fabrics', buyer: 'Massimo Dutti', sellingPrice: 10999, color: 'Camel', print: 'Solid', season: 'AW25', image: productImages[17] },
-  { id: 19, styleNumber: 'WFX-1019', styleName: 'Tie-Dye Sweatshirt', category: 'T-Shirts', fabric: 'Fleece Cotton', gsm: 280, supplier: 'Pacific Garments', buyer: 'Zara', sellingPrice: 2949, color: 'Multi', print: 'Tie-Dye', season: 'SS25', image: productImages[18] },
-  { id: 20, styleNumber: 'WFX-1020', styleName: 'Paisley Silk Scarf', category: 'Accessories', fabric: 'Silk Twill', gsm: 60, supplier: 'Euro Fabrics', buyer: 'Massimo Dutti', sellingPrice: 4599, color: 'Burgundy', print: 'Paisley', season: 'AW25', image: productImages[19] },
+  { id: 1, styleNumber: 'VGD-1001', styleName: 'Classic Oxford Shirt', category: 'Shirts', fabric: '100% Cotton', gsm: 120, supplier: 'Orient Textiles', buyer: 'H&M', sellingPrice: 2099, color: 'White', print: 'Solid', season: 'SS25', image: productImages[0] },
+  { id: 2, styleNumber: 'VGD-1002', styleName: 'Slim Fit Polo', category: 'T-Shirts', fabric: 'Cotton Pique', gsm: 180, supplier: 'Pacific Garments', buyer: 'Zara', sellingPrice: 1549, color: 'Navy', print: 'Solid', season: 'SS25', image: productImages[1] },
+  { id: 3, styleNumber: 'VGD-1003', styleName: 'Relaxed Crew Tee', category: 'T-Shirts', fabric: 'Organic Cotton', gsm: 160, supplier: 'Green Stitch Ltd', buyer: 'Uniqlo', sellingPrice: 1099, color: 'Black', print: 'Solid', season: 'AW25', image: productImages[2] },
+  { id: 4, styleNumber: 'VGD-1004', styleName: 'Heritage Henley', category: 'T-Shirts', fabric: 'Cotton Jersey', gsm: 200, supplier: 'Orient Textiles', buyer: 'Gap', sellingPrice: 1849, color: 'Olive', print: 'Solid', season: 'AW25', image: productImages[3] },
+  { id: 5, styleNumber: 'VGD-1005', styleName: 'Vintage Wash Denim', category: 'Pants', fabric: 'Denim Twill', gsm: 340, supplier: 'Blue Ridge Mills', buyer: "Levi's", sellingPrice: 3799, color: 'Indigo', print: 'Solid', season: 'SS25', image: productImages[4] },
+  { id: 6, styleNumber: 'VGD-1006', styleName: 'Tropical Print Aloha', category: 'Shirts', fabric: 'Rayon', gsm: 100, supplier: 'Pacific Garments', buyer: 'Tommy Bahama', sellingPrice: 2949, color: 'Multi', print: 'Floral', season: 'SS25', image: productImages[5] },
+  { id: 7, styleNumber: 'VGD-1007', styleName: 'Performance Jogger', category: 'Pants', fabric: 'Poly-Spandex', gsm: 240, supplier: 'ActiveWear Co', buyer: 'Nike', sellingPrice: 3249, color: 'Charcoal', print: 'Solid', season: 'AW25', image: productImages[6] },
+  { id: 8, styleNumber: 'VGD-1008', styleName: 'Linen Blend Blazer', category: 'Outerwear', fabric: 'Linen Blend', gsm: 180, supplier: 'Euro Fabrics', buyer: 'Massimo Dutti', sellingPrice: 7599, color: 'Beige', print: 'Solid', season: 'SS25', image: productImages[7] },
+  { id: 9, styleNumber: 'VGD-1009', styleName: 'Graphic Print Hoodie', category: 'Outerwear', fabric: 'French Terry', gsm: 320, supplier: 'Green Stitch Ltd', buyer: 'H&M', sellingPrice: 2499, color: 'Grey', print: 'Graphic', season: 'AW25', image: productImages[8] },
+  { id: 10, styleNumber: 'VGD-1010', styleName: 'Chino Shorts', category: 'Pants', fabric: 'Cotton Twill', gsm: 200, supplier: 'Orient Textiles', buyer: 'Gap', sellingPrice: 2299, color: 'Khaki', print: 'Solid', season: 'SS25', image: productImages[9] },
+  { id: 11, styleNumber: 'VGD-1011', styleName: 'Striped Breton Tee', category: 'T-Shirts', fabric: 'Cotton Jersey', gsm: 160, supplier: 'Euro Fabrics', buyer: 'Zara', sellingPrice: 1699, color: 'Navy/White', print: 'Stripes', season: 'SS25', image: productImages[10] },
+  { id: 12, styleNumber: 'VGD-1012', styleName: 'Puffer Vest', category: 'Outerwear', fabric: 'Nylon Ripstop', gsm: 80, supplier: 'ActiveWear Co', buyer: 'Uniqlo', sellingPrice: 4999, color: 'Black', print: 'Solid', season: 'AW25', image: productImages[11] },
+  { id: 13, styleNumber: 'VGD-1013', styleName: 'Chambray Work Shirt', category: 'Shirts', fabric: 'Chambray', gsm: 140, supplier: 'Blue Ridge Mills', buyer: 'J.Crew', sellingPrice: 2699, color: 'Light Blue', print: 'Solid', season: 'SS25', image: productImages[12] },
+  { id: 14, styleNumber: 'VGD-1014', styleName: 'Floral Maxi Dress', category: 'Dresses', fabric: 'Viscose', gsm: 120, supplier: 'Pacific Garments', buyer: 'H&M', sellingPrice: 3599, color: 'Multi', print: 'Floral', season: 'SS25', image: productImages[13] },
+  { id: 15, styleNumber: 'VGD-1015', styleName: 'Cargo Utility Pant', category: 'Pants', fabric: 'Cotton Canvas', gsm: 280, supplier: 'Orient Textiles', buyer: 'Gap', sellingPrice: 4199, color: 'Army Green', print: 'Solid', season: 'AW25', image: productImages[14] },
+  { id: 16, styleNumber: 'VGD-1016', styleName: 'Knit Beanie', category: 'Accessories', fabric: 'Acrylic Knit', gsm: 200, supplier: 'Green Stitch Ltd', buyer: 'Uniqlo', sellingPrice: 1249, color: 'Burgundy', print: 'Solid', season: 'AW25', image: productImages[15] },
+  { id: 17, styleNumber: 'VGD-1017', styleName: 'Athletic Tank Top', category: 'T-Shirts', fabric: 'Mesh Polyester', gsm: 100, supplier: 'ActiveWear Co', buyer: 'Nike', sellingPrice: 1849, color: 'White', print: 'Solid', season: 'SS25', image: productImages[16] },
+  { id: 18, styleNumber: 'VGD-1018', styleName: 'Wool Overcoat', category: 'Outerwear', fabric: 'Wool Blend', gsm: 400, supplier: 'Euro Fabrics', buyer: 'Massimo Dutti', sellingPrice: 10999, color: 'Camel', print: 'Solid', season: 'AW25', image: productImages[17] },
+  { id: 19, styleNumber: 'VGD-1019', styleName: 'Tie-Dye Sweatshirt', category: 'T-Shirts', fabric: 'Fleece Cotton', gsm: 280, supplier: 'Pacific Garments', buyer: 'Zara', sellingPrice: 2949, color: 'Multi', print: 'Tie-Dye', season: 'SS25', image: productImages[18] },
+  { id: 20, styleNumber: 'VGD-1020', styleName: 'Paisley Silk Scarf', category: 'Accessories', fabric: 'Silk Twill', gsm: 60, supplier: 'Euro Fabrics', buyer: 'Massimo Dutti', sellingPrice: 4599, color: 'Burgundy', print: 'Paisley', season: 'AW25', image: productImages[19] },
 ];
 
 // ========================================
@@ -132,8 +132,8 @@ WHERE fabric LIKE '%Cotton%'
 ORDER BY gsm DESC;`,
     answer: "Found 2 cotton shirts from Orient Textiles with GSM above 120:",
     results: [
-      { style_number: 'WFX-1001', style_name: 'Classic Oxford Shirt', fabric: '100% Cotton', gsm: 120, supplier: 'Orient Textiles', selling_price: '₹2,099' },
-      { style_number: 'WFX-1013', style_name: 'Chambray Work Shirt', fabric: 'Chambray', gsm: 140, supplier: 'Blue Ridge Mills', selling_price: '₹2,699' },
+      { style_number: 'VGD-1001', style_name: 'Classic Oxford Shirt', fabric: '100% Cotton', gsm: 120, supplier: 'Orient Textiles', selling_price: '₹2,099' },
+      { style_number: 'VGD-1013', style_name: 'Chambray Work Shirt', fabric: 'Chambray', gsm: 140, supplier: 'Blue Ridge Mills', selling_price: '₹2,699' },
     ]
   },
   {
@@ -188,9 +188,9 @@ export const suggestedQueries = [
 // ========================================
 export const activityFeed = [
   { id: 1, action: 'New order placed', detail: 'ORD-2407 from Zara — 14 items', time: '2 min ago', type: 'order' },
-  { id: 2, action: 'Quality check passed', detail: 'WFX-1008 Linen Blend Blazer', time: '15 min ago', type: 'quality' },
+  { id: 2, action: 'Quality check passed', detail: 'VGD-1008 Linen Blend Blazer', time: '15 min ago', type: 'quality' },
   { id: 3, action: 'Shipment dispatched', detail: 'ORD-2399 to H&M — 22 items', time: '1 hour ago', type: 'shipping' },
-  { id: 4, action: 'New product added', detail: 'WFX-1021 Summer Linen Pant', time: '3 hours ago', type: 'product' },
+  { id: 4, action: 'New product added', detail: 'VGD-1021 Summer Linen Pant', time: '3 hours ago', type: 'product' },
   { id: 5, action: 'Supplier onboarded', detail: 'Skyline Fabrics — Denim specialist', time: '5 hours ago', type: 'supplier' },
-  { id: 6, action: 'Price updated', detail: 'WFX-1005 Vintage Wash Denim — ₹3,799 → ₹3,499', time: '6 hours ago', type: 'price' },
+  { id: 6, action: 'Price updated', detail: 'VGD-1005 Vintage Wash Denim — ₹3,799 → ₹3,499', time: '6 hours ago', type: 'price' },
 ];

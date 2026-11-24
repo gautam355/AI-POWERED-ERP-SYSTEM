@@ -1,5 +1,5 @@
 # ============================================================
-# WFX AI Explorer — Python Dependencies
+# Vanguard AI ERP — Python Dependencies
 # ============================================================
 # Install with: pip install -r requirements.txt
 # ============================================================

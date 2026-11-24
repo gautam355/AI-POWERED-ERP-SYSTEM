@@ -1,5 +1,5 @@
 // ============================================================
-// WFX AI Explorer — API Service Layer
+// Vanguard AI ERP — API Service Layer
 // Connects frontend to FastAPI backend (which connects to Supabase)
 // Falls back to mock data when backend is unavailable
 // ============================================================

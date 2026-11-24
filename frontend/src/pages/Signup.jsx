@@ -40,7 +40,7 @@ export default function Signup() {
             <Boxes className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Create an account</h1>
-          <p className="text-sm text-gray-500 mt-2">Join WFX ERP System to manage your business</p>
+          <p className="text-sm text-gray-500 mt-2">Join Vanguard AI ERP to manage your business</p>
         </div>
 
         {error && (

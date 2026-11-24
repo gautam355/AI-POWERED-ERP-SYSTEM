@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ============================================================
-# WFX AI Explorer -- Backend API
+# Vanguard AI ERP -- Backend API
 # FastAPI + Vanna AI (NL-to-SQL) + Supabase PostgreSQL
 # ============================================================
 
@@ -263,8 +263,8 @@ def run_sql(sql: str, readonly: bool = False, validate: bool = False) -> list[di
 # ============================================================
 
 app = FastAPI(
-    title="WFX AI Explorer API",
-    description="AI-Native ERP — NL-to-SQL via OpenRouter + Supabase PostgreSQL",
+    title="Vanguard AI ERP API",
+    description="AI-Native Hardened ERP — NL-to-SQL via OpenRouter + Supabase PostgreSQL",
     version="2.1.0",
 )
 
@@ -302,8 +302,8 @@ class ImageSearchRequest(BaseModel):
 async def health_check():
     return HealthResponse(
         status="ok",
-        message="WFX AI Explorer API is running",
-        service="WFX AI Explorer v2.1.0",
+        message="Vanguard AI ERP API is running",
+        service="Vanguard AI ERP v2.1.0",
     )
 
 
@@ -611,7 +611,7 @@ async def search_image(request: ImageSearchRequest):
 if __name__ == "__main__":
     import uvicorn
     print("=" * 60)
-    print("  WFX AI Explorer — Backend API  v2.1.0")
+    print("  Vanguard AI ERP — Backend API  v2.1.0")
     print("  API:  http://localhost:8000")
     print("  Docs: http://localhost:8000/docs")
     print("=" * 60)

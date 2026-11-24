@@ -23,7 +23,7 @@ export default function Login() {
     if (success) {
       navigate('/');
     } else {
-      setError('Invalid email or password. Try admin@wfx.com / admin123');
+      setError('Invalid email or password. Try admin@vanguard.com / admin123');
     }
   };
 
@@ -39,7 +39,7 @@ export default function Login() {
             <Boxes className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Welcome back</h1>
-          <p className="text-sm text-gray-500 mt-2">Enter your credentials to access WFX ERP</p>
+          <p className="text-sm text-gray-500 mt-2">Enter your credentials to access Vanguard AI ERP</p>
         </div>
 
         {error && (
@@ -61,7 +61,7 @@ export default function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="block w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow outline-none"
-                placeholder="admin@wfx.com"
+                placeholder="admin@vanguard.com"
               />
             </div>
           </div>

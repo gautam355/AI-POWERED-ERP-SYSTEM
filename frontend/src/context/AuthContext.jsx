@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     // Check if user is logged in
-    const storedUser = localStorage.getItem('wfx_user');
+    const storedUser = localStorage.getItem('vanguard_user') || localStorage.getItem('wfx_user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
@@ -27,18 +27,18 @@ export function AuthProvider({ children }) {
     };
     
     // Check if we have registered users
-    const users = JSON.parse(localStorage.getItem('wfx_users') || '[]');
+    const users = JSON.parse(localStorage.getItem('vanguard_users') || '[]');
     const existingUser = users.find(u => u.email === email && u.password === password);
     
     if (existingUser) {
       setUser(existingUser);
-      localStorage.setItem('wfx_user', JSON.stringify(existingUser));
+      localStorage.setItem('vanguard_user', JSON.stringify(existingUser));
       return true;
-    } else if (email === 'admin@wfx.com' && password === 'admin123') {
+    } else if (email === 'admin@vanguard.com' && password === 'admin123') {
       // default admin fallback
-      const defaultAdmin = { ...mockUser, name: 'Gautam' };
+      const defaultAdmin = { ...mockUser, email: 'admin@vanguard.com', name: 'Gautam' };
       setUser(defaultAdmin);
-      localStorage.setItem('wfx_user', JSON.stringify(defaultAdmin));
+      localStorage.setItem('vanguard_user', JSON.stringify(defaultAdmin));
       return true;
     }
     
@@ -46,7 +46,7 @@ export function AuthProvider({ children }) {
   };
 
   const signup = (name, email, password) => {
-    const users = JSON.parse(localStorage.getItem('wfx_users') || '[]');
+    const users = JSON.parse(localStorage.getItem('vanguard_users') || '[]');
     
     if (users.find(u => u.email === email)) {
       throw new Error('Email already exists');
@@ -61,29 +61,30 @@ export function AuthProvider({ children }) {
     };
     
     users.push(newUser);
-    localStorage.setItem('wfx_users', JSON.stringify(users));
+    localStorage.setItem('vanguard_users', JSON.stringify(users));
     
     setUser(newUser);
-    localStorage.setItem('wfx_user', JSON.stringify(newUser));
+    localStorage.setItem('vanguard_user', JSON.stringify(newUser));
     return true;
   };
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem('vanguard_user');
     localStorage.removeItem('wfx_user');
   };
   
   const updateUser = (updatedData) => {
     const updatedUser = { ...user, ...updatedData };
     setUser(updatedUser);
-    localStorage.setItem('wfx_user', JSON.stringify(updatedUser));
+    localStorage.setItem('vanguard_user', JSON.stringify(updatedUser));
     
     // update in users array
-    const users = JSON.parse(localStorage.getItem('wfx_users') || '[]');
+    const users = JSON.parse(localStorage.getItem('vanguard_users') || '[]');
     const index = users.findIndex(u => u.email === user.email);
     if (index !== -1) {
       users[index] = updatedUser;
-      localStorage.setItem('wfx_users', JSON.stringify(users));
+      localStorage.setItem('vanguard_users', JSON.stringify(users));
     }
   };
 

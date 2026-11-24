@@ -1,8 +1,8 @@
-# WFX AI-Powered ERP System (WFX AI Explorer)
+# Vanguard AI ERP (Vanguard AI Explorer)
 
-An intelligent, AI-powered Enterprise Resource Planning (ERP) platform designed for modern garment manufacturing, supply chain tracking, and sales operations. 
+An intelligent, hardened Enterprise Resource Planning (ERP) platform designed for modern garment manufacturing, supply chain tracking, and sales operations. 
 
-WFX AI Explorer features an advanced **Natural Language to SQL (NL-to-SQL)** query engine powered by Vanna AI and a **Semantic Image Search** backend using OpenAI's CLIP (Contrastive Language-Image Pretraining) model to query and search product catalogs, orders, invoices, tech packs, suppliers, and buyers using plain English text or visual queries.
+Vanguard AI ERP features an advanced **Natural Language to SQL (NL-to-SQL)** query engine powered by Vanna AI and a **Semantic Image Search** backend using OpenAI's CLIP (Contrastive Language-Image Pretraining) model to query and search product catalogs, orders, invoices, tech packs, suppliers, and buyers using plain English text or visual queries.
 
 ---
 
@@ -118,7 +118,7 @@ erDiagram
 
 ## 🛡️ Cybersecurity & AppSec Architecture (OWASP LLM Defense)
 
-WFX AI Explorer enforces defense-in-depth principles to secure critical enterprise data against prompt injections, unauthorized database mutations, and resource exhaustion attacks:
+Vanguard AI ERP enforces defense-in-depth principles to secure critical enterprise data against prompt injections, unauthorized database mutations, and resource exhaustion attacks:
 
 ### 1. Dynamic SQL Sandboxing (`backend/main.py`)
 * **Read-Only Operation Enforced:** Every incoming AI/user query is validated to ensure it strictly begins with `SELECT` or `WITH`.
@@ -177,7 +177,7 @@ If you want to quickly evaluate the platform without configuring PostgreSQL or O
    ```
 2. Open [http://localhost:5173](http://localhost:5173).
 3. Log in with demo credentials:
-   - **Email**: `admin@wfx.com`
+   - **Email**: `admin@vanguard.com`
    - **Password**: `admin123`
 4. All features (Dashboard, NL-to-SQL Query generation with charts, Visual Image Search, and Finished Goods Filters) will run seamlessly in intelligent offline simulation mode.
 

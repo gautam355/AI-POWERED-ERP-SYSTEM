@@ -87,11 +87,11 @@ const getDemoResponse = (query) => {
     return {
       sql: `SELECT style_number, style_name, category, fabric, gsm, selling_price\nFROM finished_goods\nWHERE gsm > 200\nORDER BY gsm DESC\nLIMIT 5;`,
       data: [
-        { style_number: 'WFX-1018', style_name: 'Wool Overcoat', category: 'Outerwear', fabric: 'Wool Blend', gsm: 400, selling_price: 10999 },
-        { style_number: 'WFX-1005', style_name: 'Vintage Wash Denim', category: 'Pants', fabric: 'Denim Twill', gsm: 340, selling_price: 3799 },
-        { style_number: 'WFX-1009', style_name: 'Graphic Print Hoodie', category: 'Outerwear', fabric: 'French Terry', gsm: 320, selling_price: 2499 },
-        { style_number: 'WFX-1015', style_name: 'Cargo Utility Pant', category: 'Pants', fabric: 'Cotton Canvas', gsm: 280, selling_price: 4199 },
-        { style_number: 'WFX-1019', style_name: 'Tie-Dye Sweatshirt', category: 'T-Shirts', fabric: 'Fleece Cotton', gsm: 280, selling_price: 2949 }
+        { style_number: 'VGD-1018', style_name: 'Wool Overcoat', category: 'Outerwear', fabric: 'Wool Blend', gsm: 400, selling_price: 10999 },
+        { style_number: 'VGD-1005', style_name: 'Vintage Wash Denim', category: 'Pants', fabric: 'Denim Twill', gsm: 340, selling_price: 3799 },
+        { style_number: 'VGD-1009', style_name: 'Graphic Print Hoodie', category: 'Outerwear', fabric: 'French Terry', gsm: 320, selling_price: 2499 },
+        { style_number: 'VGD-1015', style_name: 'Cargo Utility Pant', category: 'Pants', fabric: 'Cotton Canvas', gsm: 280, selling_price: 4199 },
+        { style_number: 'VGD-1019', style_name: 'Tie-Dye Sweatshirt', category: 'T-Shirts', fabric: 'Fleece Cotton', gsm: 280, selling_price: 2949 }
       ]
     };
   }
@@ -126,11 +126,11 @@ const getDemoResponse = (query) => {
   return {
     sql: `SELECT style_number, style_name, category, fabric, color, cost, selling_price\nFROM finished_goods\nWHERE category ILIKE '%shirt%' OR fabric ILIKE '%cotton%'\nLIMIT 5;`,
     data: [
-      { style_number: 'WFX-1001', style_name: 'Classic Oxford Shirt', category: 'Shirts', fabric: '100% Cotton', color: 'White', cost: 850, selling_price: 2099 },
-      { style_number: 'WFX-1002', style_name: 'Slim Fit Polo', category: 'T-Shirts', fabric: 'Cotton Pique', color: 'Navy', cost: 620, selling_price: 1549 },
-      { style_number: 'WFX-1003', style_name: 'Relaxed Crew Tee', category: 'T-Shirts', fabric: 'Organic Cotton', color: 'Black', cost: 420, selling_price: 1099 },
-      { style_number: 'WFX-1004', style_name: 'Heritage Henley', category: 'T-Shirts', fabric: 'Cotton Jersey', color: 'Olive', cost: 710, selling_price: 1849 },
-      { style_number: 'WFX-1013', style_name: 'Chambray Work Shirt', category: 'Shirts', fabric: 'Chambray', color: 'Light Blue', cost: 950, selling_price: 2699 }
+      { style_number: 'VGD-1001', style_name: 'Classic Oxford Shirt', category: 'Shirts', fabric: '100% Cotton', color: 'White', cost: 850, selling_price: 2099 },
+      { style_number: 'VGD-1002', style_name: 'Slim Fit Polo', category: 'T-Shirts', fabric: 'Cotton Pique', color: 'Navy', cost: 620, selling_price: 1549 },
+      { style_number: 'VGD-1003', style_name: 'Relaxed Crew Tee', category: 'T-Shirts', fabric: 'Organic Cotton', color: 'Black', cost: 420, selling_price: 1099 },
+      { style_number: 'VGD-1004', style_name: 'Heritage Henley', category: 'T-Shirts', fabric: 'Cotton Jersey', color: 'Olive', cost: 710, selling_price: 1849 },
+      { style_number: 'VGD-1013', style_name: 'Chambray Work Shirt', category: 'Shirts', fabric: 'Chambray', color: 'Light Blue', cost: 950, selling_price: 2699 }
     ]
   };
 };

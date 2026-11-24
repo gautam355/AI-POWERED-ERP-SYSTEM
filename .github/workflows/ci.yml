@@ -1,4 +1,4 @@
-name: WFX ERP - CI/CD Pipeline
+name: Vanguard AI ERP - CI/CD Pipeline
 
 on:
   push:
@@ -177,7 +177,7 @@ jobs:
       - name: CI/CD Summary
         run: |
           echo "================================================"
-          echo "  WFX ERP - CI/CD Pipeline Complete"
+          echo "  Vanguard AI ERP - CI/CD Pipeline Complete"
           echo "================================================"
           echo "  Backend : Syntax + Endpoints validated"
           echo "  Frontend: Production build successful"

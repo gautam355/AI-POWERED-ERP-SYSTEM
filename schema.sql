@@ -1,5 +1,5 @@
 -- ============================================================
--- WFX AI Explorer — Database Schema (PostgreSQL)
+-- Vanguard AI ERP — Database Schema (PostgreSQL)
 -- ============================================================
 
 -- 1. Suppliers Table
